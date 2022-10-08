@@ -1,0 +1,96 @@
+{
+  "name": "den-ui",
+  "version": "0.1.0",
+  "description": "A React Typescript component library",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@types/react": "^18.0.21",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "semantic-release": "^19.0.5",
+    "tslib": "^2.4.0",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "react": ">=16"
+  },
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run prettier && npm run lint && cp package.json dist/ ",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/braydenbabbitt/den-ui.git"
+  },
+  "author": {
+    "name": "Brayden Babbitt",
+    "url": "https://braydenbabbitt.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/braydenbabbitt/den-ui/issues"
+  },
+  "homepage": "https://github.com/braydenbabbitt/den-ui#readme",
+  "files": [
+    "dist",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "keywords": [
+    "react",
+    "typescript",
+    "brayden babbitt"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "pkgRoot": "dist"
+  },
+  "release": {
+    "branches": [
+      "+([0-9])?(.{+([0-9]),x}).x",
+      "main",
+      "next",
+      "next-major",
+      {
+        "name": "beta",
+        "prerelease": true
+      },
+      {
+        "name": "alpha",
+        "prerelease": true
+      }
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{src,tests,example/src}/**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "git add"
+    ],
+    "{**/*,*}.{js,ts,jsx,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
