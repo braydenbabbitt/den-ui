@@ -15,7 +15,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "react": "^18.2.0",
@@ -31,7 +31,7 @@
     "build": "tsc",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
-    "prepare": "npm run build",
+    "prepare": "npm run build && husky install",
     "prepublishOnly": "npm run prettier && npm run lint",
     "semantic-release": "semantic-release"
   },
@@ -76,21 +76,6 @@
         "name": "alpha",
         "prerelease": true
       }
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "{src,tests,example/src}/**/*.{js,ts,jsx,tsx}": [
-      "prettier --write",
-      "git add"
-    ],
-    "{**/*,*}.{js,ts,jsx,tsx}": [
-      "eslint --fix",
-      "git add"
     ]
   }
 }
