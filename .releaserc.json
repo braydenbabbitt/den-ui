@@ -2,12 +2,26 @@
   "repositoryUrl": "https://github.com/braydenbabbitt/den-ui",
   "debug": "true",
   "plugins": [
-    "@semantic-release/commit-analyzer",
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "options": {
+            "preset": {
+              "name": "conventionalchangelog",
+              "issuePrefixes": ["#"],
+              "issueUrlFormat": "https://github.com/braydenbabbitt/den-ui/issues"
+            }
+          }
+        }
+      }
+    ],
     "@semantic-release/release-notes-generator",
     "@semantic-release/npm",
     "@semantic-release/github",
-    [ 
-      "@semantic-release/changelog", 
+    [
+      "@semantic-release/changelog",
       {
         "changelogFile": "CHANGELOG.md"
       }
