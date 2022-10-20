@@ -6,8 +6,6 @@ function App() {
   const [testStorage, setTestStorage] = useDestructableLocalStorage<string | undefined>('testKey', undefined);
   const localStorageValue = localStorage.getItem('testKey') ?? '';
 
-  console.info([testStorage, localStorageValue]);
-
   return (
     <main>
       <h1>Test</h1>
@@ -16,7 +14,7 @@ function App() {
           setTestStorage(testStorage ? undefined : 'test');
         }}
       >
-        Write Local Storage
+        {testStorage ? 'Delete Local Storage' : 'Write Local Storage'}
       </Button>
       <h2>State value: {testStorage}</h2>
       <h2>Local storage value: {localStorageValue}</h2>
