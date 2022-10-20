@@ -2,6 +2,8 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "eslint.validate": [
     "react-hooks/rules-of-hooks",
     "react-hooks/exhaustive-deps",
@@ -14,6 +16,8 @@
     "all",
     "husky",
     "github-actions",
-    "example"
-  ]
+    "example",
+    "hooks"
+  ],
+  "files.autoSave": "onFocusChange"
 }
