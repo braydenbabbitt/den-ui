@@ -13,7 +13,6 @@ export const useDestructableLocalStorage = <T = string>(key: string, defaultValu
         setValue((prev) => {
           if (prev) {
             const result = value(prev);
-            console.log(serializeValue(result), result);
             localStorage.setItem(key, serializeValue(result));
             return result;
           } else {
