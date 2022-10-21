@@ -32,7 +32,7 @@
     "react": ">=16"
   },
   "scripts": {
-    "build": "npm run prettier && tsc",
+    "build": "tsc",
     "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "lint:fix": "eslint --fix \"{**/*,*}.{js,ts,jsx,tsx}\"",
     "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
