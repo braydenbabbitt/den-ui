@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
 import { ReactNode } from 'react';
+import { css } from '@emotion/react';
 
 type ButtonProps = {
   children?: ReactNode;
@@ -8,9 +8,5 @@ type ButtonProps = {
 };
 
 export const Button = ({ children, onClick }: ButtonProps) => {
-  return <button
-    onClick={onClick}
-  >
-    {children}
-  </button>;
+  return <button onClick={onClick}>{children}</button>;
 };
