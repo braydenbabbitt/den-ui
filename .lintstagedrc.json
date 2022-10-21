@@ -1,8 +1,8 @@
 {
-  "{src,tests,example/src}/**/*.{js,ts,jsx,tsx}": [
-      "prettier --write"
-    ],
-    "{**/*,*}.{js,ts,jsx,tsx}": [
-      "eslint --fix"
-    ]
+  "{src,example/src}/**/*.{js,ts,jsx,tsx}": [
+    "prettier --write"
+  ],
+  "{**/*,*}.{js,ts,jsx,tsx}": [
+    "eslint --fix"
+  ]
 }

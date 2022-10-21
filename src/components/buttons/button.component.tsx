@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 
 type ButtonProps = {
@@ -7,5 +8,10 @@ type ButtonProps = {
 };
 
 export const Button = ({ children, onClick }: ButtonProps) => {
-  return <button onClick={onClick}>{children}</button>;
+  return <button
+    onClick={onClick}
+    css={css`background-color: red;`}
+  >
+    {children}
+  </button>;
 };
