@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, useDestructableLocalStorage } from 'den-ui';
-import './App.css';
 
 function App() {
   const [testStorage, setTestStorage] = useDestructableLocalStorage<string | undefined>('testKey', undefined);
@@ -13,6 +12,8 @@ function App() {
         onClick={() => {
           setTestStorage(testStorage ? undefined : 'test');
         }}
+        // variant='outlined'
+        // color='purple'
       >
         {testStorage ? 'Delete Local Storage' : 'Write Local Storage'}
       </Button>
