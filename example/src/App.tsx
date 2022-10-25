@@ -12,8 +12,7 @@ function App() {
         onClick={() => {
           setTestStorage(testStorage ? undefined : 'test');
         }}
-        // variant='outlined'
-        // color='purple'
+        variant='outlined'
       >
         {testStorage ? 'Delete Local Storage' : 'Write Local Storage'}
       </Button>
