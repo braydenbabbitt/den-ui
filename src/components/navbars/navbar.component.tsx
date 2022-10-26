@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 import { MIDDLE_GRAY_HEX } from '../../constants/theme';
-import { Link } from 'react-router-dom';
 
 type NavbarProps = {
   children: ReactNode;
@@ -9,7 +8,7 @@ type NavbarProps = {
 
 const Navbar = ({ children }: NavbarProps) => {
   const styles = css({
-    padding: '0.5em',
+    padding: '0.75em',
     backgroundColor: MIDDLE_GRAY_HEX,
     maxHeight: '60px',
     display: 'flex',
@@ -21,24 +20,19 @@ const Navbar = ({ children }: NavbarProps) => {
 };
 
 type NavbarMainImageProps = {
-  src: string;
-  to?: string;
-  alt?: string;
+  children: ReactNode;
 };
 
-const MainImage = ({ src, to, alt }: NavbarMainImageProps) => {
-  const styles = css({});
-
-  if (to) {
-    return (
-      <Link css={styles} to={to}>
-        <img src={src} alt={alt} />
-      </Link>
-    );
-  } else {
-    return <img css={styles} src={src} alt={alt} />;
-  }
+const MainImage = ({ children }: NavbarMainImageProps) => {
+  return <>{children}</>;
 };
+
+type NavLinkProps = {
+  label: string;
+  to: string;
+};
+
+type MainLinksProps = NavLinkProps[];
 
 Navbar.MainImage = MainImage;
 export { Navbar };

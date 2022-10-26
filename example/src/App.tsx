@@ -8,7 +8,11 @@ function App() {
   return (
     <>
       <Navbar>
-        <Navbar.MainImage src='Wordmark-white-transparent.svg' />
+        <Navbar.MainImage>
+          <a href='/'>
+            <img src='Wordmark-white-transparent.svg' alt='Brayden Babbitt Logo' />
+          </a>
+        </Navbar.MainImage>
         <a>Test Link</a>
       </Navbar>
       <main>
