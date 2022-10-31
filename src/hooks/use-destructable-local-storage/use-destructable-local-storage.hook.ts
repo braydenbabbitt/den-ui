@@ -11,8 +11,8 @@ export const useDestructableLocalStorage = <T = string>(key: string, defaultValu
     (value: T | ((prevValue: T) => T) | undefined = undefined) => {
       if (value instanceof Function) {
         setValue((prev) => {
-          if (prev) {
-            const result = value(prev);
+          const result = value(prev);
+          if (result) {
             localStorage.setItem(key, serializeValue(result));
             return result;
           } else {
