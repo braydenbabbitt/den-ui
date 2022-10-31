@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { deserializeValue, serializeValue } from '../utils/serialization';
+// trigger build
 
 export const useDestructableLocalStorage = <T = string>(key: string, defaultValue: T, useInitialStoredValue = true) => {
   const initialStoredValue = localStorage.getItem(key);
