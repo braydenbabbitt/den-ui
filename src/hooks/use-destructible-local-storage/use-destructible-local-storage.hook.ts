@@ -20,7 +20,7 @@ export const useDestructibleLocalStorage = <T>(
   );
 
   const storeValue = useCallback(
-    (value?: T | ((prevValue: T) => T) | undefined) => {
+    (value?: T | ((prevValue: T) => T | undefined) | undefined) => {
       if (value instanceof Function) {
         setState((prevState) => {
           const newState = value(prevState);
