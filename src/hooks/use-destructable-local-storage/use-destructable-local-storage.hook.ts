@@ -8,7 +8,7 @@ export const useDestructableLocalStorage = <T = string>(key: string, defaultValu
   );
 
   const storeValue = useCallback(
-    (value: T | ((prevValue: T) => T) | undefined = undefined) => {
+    (value: T | ((prevValue: T) => T | undefined) | undefined = undefined) => {
       if (value instanceof Function) {
         setValue((prev) => {
           const result = value(prev ?? defaultValue);
