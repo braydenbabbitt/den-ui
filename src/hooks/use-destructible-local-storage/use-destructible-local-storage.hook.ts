@@ -11,17 +11,16 @@ const getDeserializedStoredValue = (key: string) => {
 
 export const useDestructibleLocalStorage = <T>(
   key: string,
-  defaultValue?: T,
+  defaultValue: T,
   useStoredValueFirst = true,
   storeDefaultValueInitially = false,
 ) => {
-  type ValueType = typeof defaultValue;
-  const [state, setState] = useState<ValueType>(
-    useStoredValueFirst ? (getDeserializedStoredValue(key) as ValueType) : defaultValue,
+  const [state, setState] = useState<T>(
+    useStoredValueFirst ? getDeserializedStoredValue(key) ?? defaultValue : defaultValue,
   );
 
   const storeValue = useCallback(
-    (value: ValueType | ((prevValue: ValueType) => ValueType) | undefined) => {
+    (value?: T | ((prevValue: T) => T) | undefined) => {
       if (value instanceof Function) {
         setState((prevState) => {
           const newState = value(prevState);
@@ -36,10 +35,11 @@ export const useDestructibleLocalStorage = <T>(
       } else {
         if (value !== undefined) {
           localStorage.setItem(key, serializeValue(value));
+          setState(value);
         } else {
           localStorage.removeItem(key);
+          setState(defaultValue);
         }
-        setState(value);
       }
     },
     [key, defaultValue],
