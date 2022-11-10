@@ -18,6 +18,7 @@ export const useDestructibleLocalStorage = <T>(
   const [state, setState] = useState<T>(
     useStoredValueFirst ? getDeserializedStoredValue(key) ?? defaultValue : defaultValue,
   );
+  const [isStored, setIsStored] = useState(storeDefaultValueInitially);
 
   const storeValue = useCallback(
     (value?: T | ((prevValue: T) => T | undefined) | undefined) => {
@@ -26,18 +27,22 @@ export const useDestructibleLocalStorage = <T>(
           const newState = value(prevState);
           if (newState !== undefined) {
             localStorage.setItem(key, serializeValue(newState));
+            setIsStored(true);
             return newState;
           } else {
             localStorage.removeItem(key);
+            setIsStored(false);
             return defaultValue;
           }
         });
       } else {
         if (value !== undefined) {
           localStorage.setItem(key, serializeValue(value));
+          setIsStored(true);
           setState(value);
         } else {
           localStorage.removeItem(key);
+          setIsStored(false);
           setState(defaultValue);
         }
       }
@@ -48,8 +53,9 @@ export const useDestructibleLocalStorage = <T>(
   useEffect(() => {
     if (storeDefaultValueInitially) {
       storeValue(defaultValue);
+      setIsStored(true);
     }
   }, [defaultValue, storeDefaultValueInitially, storeValue]);
 
-  return [state, storeValue] as const;
+  return [state, storeValue, isStored] as const;
 };
