@@ -18,7 +18,7 @@ export const useDestructibleLocalStorage = <T>(
   const [state, setState] = useState<T>(
     useStoredValueFirst ? getDeserializedStoredValue(key) ?? defaultValue : defaultValue,
   );
-  const [isStored, setIsStored] = useState(storeDefaultValueInitially);
+  const [isStored, setIsStored] = useState<boolean>(storeDefaultValueInitially || localStorage.getItem(key) !== null);
 
   const storeValue = useCallback(
     (value?: T | ((prevValue: T) => T | undefined) | undefined) => {
@@ -47,13 +47,12 @@ export const useDestructibleLocalStorage = <T>(
         }
       }
     },
-    [key, defaultValue],
+    [key, defaultValue, setIsStored],
   );
 
   useEffect(() => {
     if (storeDefaultValueInitially) {
       storeValue(defaultValue);
-      setIsStored(true);
     }
   }, [defaultValue, storeDefaultValueInitially, storeValue]);
 
