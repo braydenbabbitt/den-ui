@@ -12,6 +12,7 @@ export const useTypedJSONEncoding = <T = any>(customErrorFn?: (error: unknown) =
     return undefined;
   };
 
+  // trigger release
   const parseTypedJSON = (encodedJSON: string) => {
     try {
       if (encodedJSON) {
