@@ -18,7 +18,8 @@
     "github-actions",
     "example",
     "hooks",
-    "components"
+    "components",
+    "types"
   ],
   "files.autoSave": "onFocusChange"
 }
