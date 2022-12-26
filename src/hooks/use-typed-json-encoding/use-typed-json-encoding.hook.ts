@@ -14,7 +14,9 @@ export const useTypedJSONEncoding = <T = any>(customErrorFn?: (error: unknown) =
 
   const parseTypedJSON = (encodedJSON: string) => {
     try {
-      return JSON.parse(encodedJSON) as T;
+      if (encodedJSON) {
+        return JSON.parse(encodedJSON) as T;
+      }
     } catch (error) {
       if (customErrorFn instanceof Function) {
         customErrorFn(error);
